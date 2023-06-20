@@ -60,3 +60,11 @@ Your branch is up to date with 'origin/master'.
 
 lastly to merge master branch to main branch 
 when everything is up to date 
+
+now we can concentrate on building our app and use Github as a backup 
+
+on the master branch 
+git add . to track all files  
+git commit -m 'update files'
+git push 
+
