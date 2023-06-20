@@ -11,10 +11,10 @@ export default class KanbanAPI {
 
     static insertItem(columnId, content) {
         const data = read() 
-        const column = data.find(column => columnId == columnId)
+        const column = data.find(column => column.Id == columnId)
         const item = { 
             id: Math.floor(Math.random() * 100000),
-            content
+            content,
         }
 
         if(!column) {
@@ -29,6 +29,16 @@ export default class KanbanAPI {
 
     static deleteItem(itemId) {
         const data = read()  
+
+        for (const column of data) {
+            const item = column.items.find(item => item.id == itemId)
+
+            if(item) {
+                column.items.splice(column.items.indexOf(item),1)
+            }
+        }
+
+        save(data) 
     }
 }
 
