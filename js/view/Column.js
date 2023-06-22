@@ -38,7 +38,6 @@ export default class Column {
     }
 
     renderItem(data) {
-        console.log(data.id, data.content)
         const item = new Item(data.id, data.content)
         this.elements.items.appendChild(item.elements.root)
     }
