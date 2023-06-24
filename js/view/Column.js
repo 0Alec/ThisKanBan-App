@@ -39,6 +39,6 @@ export default class Column {
 
     renderItem(data) {
         const item = new Item(data.id, data.content)
-        this.elements.items.appendChild(item.elements.root)
+        this.elements.items.appendChild(item.elements.root) 
     }
 }

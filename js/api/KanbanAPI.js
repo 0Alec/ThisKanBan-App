@@ -1,6 +1,6 @@
 export default class KanbanAPI {
     static getItems(columnId) {
-        const column = read().find(column => columnId == columnId) 
+        const column = read().find(column => column.id == columnId)
 
         if(!column) {
             return []
@@ -10,9 +10,9 @@ export default class KanbanAPI {
     }
 
     static insertItem(columnId, content) {
-        const data = read() 
-        const column = data.find(column => column.Id == columnId)
-        const item = { 
+        const data = read()
+        const column = data.find(column => column.id == columnId)
+        const item = {
             id: Math.floor(Math.random() * 100000),
             content,
         }
@@ -21,50 +21,50 @@ export default class KanbanAPI {
             throw new Error("Column does not exist")
         }
 
-        column.items.push(item) 
-        save(data)  
+        column.items.push(item)
+        save(data)
 
-        return item 
+        return item
     }
 
     static updateItem(itemId, newProps) {
         const data = read()
         const [item, currentColumn] = (() => {
             for (const column of data) {
-                const item = column.items.find(item => item.id == itemId) 
+                const item = column.items.find(item => item.id == itemId)
 
                 if(item) {
-                    return [item, column]  
+                    return [item, column]
                 }
             }
         })()
 
         if(!item) {
-            throw new Error("Item not found") 
+            throw new Error("Item not found")
         }
 
-        item.content = newProps.content == undefined ? item.content : newProps.content 
+        item.content = newProps.content === undefined ? item.content : newProps.content
 
         if(
-            newProps.columnId !== undefined 
-            && newProps.position !== undefined 
+            newProps.columnId !== undefined
+            && newProps.position !== undefined
         ) {
-            const targetColumn = data.find(column => column.id == newProps.columnId)  
-        
+            const targetColumn = data.find(column => column.id == newProps.columnId)
+
             if(!targetColumn) {
-                throw new Error("Target column not found") 
+                throw new Error("Target column not found")
             }
 
-            currentColumn.items.splice(currentColumn.items.indexOf(item),1) 
+            currentColumn.items.splice(currentColumn.items.indexOf(item),1)
 
-            targetColumn.items.splice(newProps.position,0,item) 
+            targetColumn.items.splice(newProps.position,0,item)
         }
 
-        save(data) 
+        save(data)
     }
 
     static deleteItem(itemId) {
-        const data = read()  
+        const data = read()
 
         for (const column of data) {
             const item = column.items.find(item => item.id == itemId)
@@ -74,28 +74,30 @@ export default class KanbanAPI {
             }
         }
 
-        save(data) 
+        save(data)
     }
 }
 
 function read() {
-    const json = localStorage.getItem("Kanban-data")
+    const json = localStorage.getItem("kanban-data")
 
     if(!json) {
         return [
             {
                 id: 1,
-                items: []            
+                items: []
             },
             {
                 id: 2,
-                items: []            
-            }, {
+                items: []
+            },
+            {
                 id: 3,
-                items: []            
-            }, {
+                items: []
+            },
+            {
                 id: 4,
-                items: []            
+                items: []
             },
         ]
     }
