@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap'); 
+
 .kanban {
     display: flex;
     padding: 30px;
@@ -7,7 +9,7 @@
 }
 
 .kanban * {
-    font-family: sans-serif;
+    font-family: 'Russo One', sans-serif;
 }
 
 .kanban__column {
@@ -27,9 +29,9 @@
 }
 
 .kanban__item-input {
-    padding:80px 15px;
+    padding:20px 15px;
     box-sizing: border-box;
-    background:  #ffff0063;
+    background:  #f2c708;
     border-radius: 5px;
     cursor: pointer;
 }
