@@ -31,7 +31,19 @@ export default class DropZone {
             const droppedItemElement = document.querySelector(`[data-id="${itemId}"]`) 
             const insertAfter = dropZone.parentElement.classList.contains("kanban_item") ? dropZone.parentElement : dropZone 
 
+            if(droppedItemElement.contains(dropZone)) {
+                return
+            } 
+
+            insertAfter.after(droppedItemElement) 
             
+            KanbanAPI.updateItem(itemId, {
+                columnId,
+                position: droppedIndex
+            })
         })
+
+        return dropZone 
+
     }
 }
