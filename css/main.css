@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap'); 
+=======
+/* kanban-1 */ 
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Raleway&display=swap');
+
+/* kanban-2 */ 
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+>>>>>>> 9c7818f (changed fonts for the main titles)
 
 .kanban {
     display: flex;
@@ -9,7 +18,12 @@
 }
 
 .kanban * {
+<<<<<<< HEAD
     font-family: 'Russo One', sans-serif;
+=======
+    font-family: 'Cabin Sketch', cursive;
+    /* font-family: 'Raleway', sans-serif; */ 
+>>>>>>> 9c7818f (changed fonts for the main titles)
 }
 
 .kanban__column {
